@@ -1,5 +1,5 @@
 # Moda-Movil
-Repositorio para el proyecto de Curso Integrador I.
+Una aplicación web de una tienda de ropa en línea.
 
 # Tecnologías
 * Maven
