@@ -1,4 +1,4 @@
----TABLAS---
+# TABLAS
 CREATE TABLE Categoria (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100)
@@ -107,8 +107,8 @@ CREATE TABLE Facturas (
   FOREIGN KEY (usuario_id) REFERENCES Usuarios(id)
 );
 
----DATOS---
--- Insertar datos en la tabla Categoria
+# DATOS---
+# Insertar datos en la tabla Categoria
 INSERT INTO Categoria (nombre) VALUES 
   ('Electrónicos'),
   ('Ropa'),
@@ -116,13 +116,13 @@ INSERT INTO Categoria (nombre) VALUES
   ('Alimentos'),
   ('Juguetes');
 
--- Insertar datos en la tabla Proveedor
+# Insertar datos en la tabla Proveedor
 INSERT INTO Proveedor (nombre, direccion, telefono, correo) VALUES 
   ('ElectroTech', 'Calle Principal 123', '123456789', 'info@electrotech.com'),
   ('FashionStyle', 'Avenida Central 456', '987654321', 'info@fashionstyle.com'),
   ('CasaDecor', 'Plaza Mayor 789', '456789123', 'info@casadecor.com');
 
--- Insertar datos en la tabla Productos
+# Insertar datos en la tabla Productos
 INSERT INTO Productos (categoria_id, proveedor_id, nombre, descripcion, precio, stock, fecha_ingreso) VALUES 
   (1, 1, 'Televisor LED', 'Televisor de alta definición', 599.99, 50, '2024-05-01'),
   (2, 2, 'Camiseta de algodón', 'Camiseta de color blanco', 19.99, 100, '2024-05-03'),
@@ -130,55 +130,55 @@ INSERT INTO Productos (categoria_id, proveedor_id, nombre, descripcion, precio, 
   (4, 1, 'Arroz', 'Arroz blanco de calidad premium', 5.99, 200, '2024-05-10'),
   (5, 3, 'Rompecabezas', 'Rompecabezas de 1000 piezas', 29.99, 80, '2024-05-12');
 
--- Insertar datos en la tabla Entidad
+# Insertar datos en la tabla Entidad
 INSERT INTO Entidad (name) VALUES 
   ('Entidad1'),
   ('Entidad2'),
   ('Entidad3');
 
--- Insertar datos en la tabla Usuarios
+# Insertar datos en la tabla Usuarios
 INSERT INTO Usuarios (nombre, contra, entidad_id) VALUES 
   ('Usuario1', 123456, 1),
   ('Usuario2', 654321, 2),
   ('Usuario3', 987654, 3);
 
--- Insertar datos en la tabla Clientes
+# Insertar datos en la tabla Clientes
 INSERT INTO Clientes (usuario_id, nombre, apellido, direccion, ciudad, telefono, correo) VALUES 
   (1, 'Juan', 'Pérez', 'Calle A 123', 'Ciudad1', '123456789', 'juan@example.com'),
   (2, 'María', 'Gómez', 'Avenida B 456', 'Ciudad2', '987654321', 'maria@example.com'),
   (3, 'Carlos', 'López', 'Plaza C 789', 'Ciudad3', '456789123', 'carlos@example.com');
 
--- Insertar datos en la tabla Trabajadores
+# Insertar datos en la tabla Trabajadores
 INSERT INTO Trabajadores (usuario_id, nombre, apellido, cargo, fecha_contratacion) VALUES 
   (1, 'Pedro', 'Martínez', 'Gerente de ventas', '2024-01-15'),
   (2, 'Ana', 'Ruiz', 'Asistente de administración', '2024-02-20'),
   (3, 'Laura', 'Hernández', 'Operario de almacén', '2024-03-25');
 
--- Insertar datos en la tabla Ventas
+# Insertar datos en la tabla Ventas
 INSERT INTO Ventas (usuario_id, fecha, total, metodo_pago, estado) VALUES 
   (1, '2024-05-01', 799.99, 'Tarjeta de crédito', 'Completado'),
   (2, '2024-05-02', 119.98, 'Transferencia bancaria', 'Pendiente'),
   (3, '2024-05-03', 99.98, 'Efectivo', 'Completado');
 
--- Insertar datos en la tabla detallesVentas
+# Insertar datos en la tabla detallesVentas
 INSERT INTO detallesVentas (venta_id, producto_id, cantidad, precio_unitario) VALUES 
   (1, 1, 1, 599.99),
   (2, 2, 2, 19.99),
   (3, 3, 1, 79.99);
 
--- Insertar datos en la tabla Envio
+# Insertar datos en la tabla Envio
 INSERT INTO Envio (venta_id, tipo_envio) VALUES 
   (1, 'Express'),
   (2, 'Estándar'),
   (3, 'Express');
 
--- Insertar datos en la tabla historialVentas
+# Insertar datos en la tabla historialVentas
 INSERT INTO historialVentas (venta_id, fecha, total, metodo_pago) VALUES 
   (1, '2024-05-01', 799.99, 'Tarjeta de crédito'),
   (2, '2024-05-02', 119.98, 'Transferencia bancaria'),
   (3, '2024-05-03', 99.98, 'Efectivo');
 
--- Insertar datos en la tabla Facturas
+# Insertar datos en la tabla Facturas
 INSERT INTO Facturas (venta_id, usuario_id, fecha, total, metodo_pago) VALUES 
   (1, 1, '2024-05-01', 799.99, 'Tarjeta de crédito'),
   (2, 2, '2024-05-02', 119.98, 'Transferencia bancaria'),
