@@ -1,12 +1,21 @@
 package com.utp.modamovil.modelo;
 
 public class DetallesVenta extends Entidad {
+    private Venta venta;
     private Producto producto;
     private int cantidad;
     private float precioUnitario;
     
     public DetallesVenta() {
     
+    }
+    
+    public Venta getVenta() {
+        return this.venta;
+    }
+    
+    public void setVenta(Venta venta) {
+        this.venta = venta;
     }
 
     public Producto getProducto() {

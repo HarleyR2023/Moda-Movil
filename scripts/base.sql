@@ -25,17 +25,10 @@ CREATE TABLE Productos (
   FOREIGN KEY (proveedor_id) REFERENCES Proveedor(id)
 );
 
-CREATE TABLE Entidad (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100)
-);
-
 CREATE TABLE Usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100),
-  contra INT,
-  entidad_id INT,
-  FOREIGN KEY (entidad_id) REFERENCES Entidad(id)
+  contra INT
 );
 
 CREATE TABLE Clientes (

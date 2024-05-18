@@ -9,7 +9,6 @@ public class Venta extends Entidad {
     private float total;
     private String metodoPago;
     private String estado;
-    private List<DetallesVenta> detalles;
     
     public Venta() {
         
@@ -53,13 +52,5 @@ public class Venta extends Entidad {
 
     public void setEstado(String estado) {
         this.estado = estado;
-    }
-
-    public List<DetallesVenta> getDetalles() {
-        return this.detalles;
-    }
-
-    public void setDetalles(DetallesVenta... detalles) {
-        this.detalles = List.of(detalles);
     }
 }
