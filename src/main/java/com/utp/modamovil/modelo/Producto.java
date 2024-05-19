@@ -1,38 +1,60 @@
 package com.utp.modamovil.modelo;
 
-import java.sql.Date;
+import java.util.Date;
 
-public class Producto extends Entidad {
-    private Categoria categoria;
-    private Proveedor proveedor;
+public class Producto {
+    private int id;
+    private int categoriaId;
+    private int proveedorId;
     private String nombre;
     private String descripcion;
-    private float precio;
+    private Double precio;
     private int stock;
     private Date fechaIngreso;
-    
+
+    // Constructor vacío
     public Producto() {
-    
     }
 
-    public Categoria getCategoria() {
-        return this.categoria;
+    // Constructor con todos los atributos
+    public Producto(int id, int categoriaId, int proveedorId, String nombre, String descripcion, Double precio, int stock, Date fechaIngreso) {
+        this.id = id;
+        this.categoriaId = categoriaId;
+        this.proveedorId = proveedorId;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
+        this.fechaIngreso = fechaIngreso;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    // Getters y Setters
+    public int getId() {
+        return id;
     }
 
-    public Proveedor getProveedor() {
-        return this.proveedor;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setProveedor(Proveedor proveedor) {
-        this.proveedor = proveedor;
+    public int getCategoriaId() {
+        return categoriaId;
+    }
+
+    public void setCategoriaId(int categoriaId) {
+        this.categoriaId = categoriaId;
+    }
+
+    public int getProveedorId() {
+        return proveedorId;
+    }
+
+    public void setProveedorId(int proveedorId) {
+        this.proveedorId = proveedorId;
     }
 
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
@@ -40,23 +62,23 @@ public class Producto extends Entidad {
     }
 
     public String getDescripcion() {
-        return this.descripcion;
+        return descripcion;
     }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public float getPrecio() {
-        return this.precio;
+    public Double getPrecio() {
+        return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
     public int getStock() {
-        return this.stock;
+        return stock;
     }
 
     public void setStock(int stock) {
@@ -64,10 +86,25 @@ public class Producto extends Entidad {
     }
 
     public Date getFechaIngreso() {
-        return this.fechaIngreso;
+        return fechaIngreso;
     }
 
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
+    }
+
+    // Método toString para imprimir el objeto
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", categoriaId=" + categoriaId +
+                ", proveedorId=" + proveedorId +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", stock=" + stock +
+                ", fechaIngreso=" + fechaIngreso +
+                '}';
     }
 }

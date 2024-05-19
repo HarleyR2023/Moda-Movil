@@ -7,16 +7,20 @@
         <link href="CSS/index.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="container">
-            <h2>Inicio Sesion</h2>
-            <div class="div-l">
-                <label>Usuario</label>
-                <input type="text" name="txtuser">
-            </div>
-            <div class="div-l">
-                <label>Contraseña</label>
-                <input type="password" name="txtpass">
-            </div>
-        </div>
+        <form action="Validar" method="post">
+            <div class="container">
+                <h2>Inicio Sesion</h2>
+                <div class="div-l">
+                    <label>Usuario</label>
+                    <input type="text" name="txtuser">
+                </div>
+                <div class="div-l">
+                    <label>Contraseña</label>
+                    <input type="password" name="txtpass">
+                </div>
+                <input class="btn-enviar" type="submit" name="accion" value="Ingresar">
+            </div>    
+        </form>
+
     </body>
 </html>

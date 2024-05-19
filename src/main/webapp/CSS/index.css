@@ -51,3 +51,12 @@ h2{
     height: 25px;
     font-size: 18px;
 }
+
+.btn-enviar{
+    margin: 20px auto 0px auto;
+    display: flex;
+    border: none;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,64 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 18 may. 2024, 17:49:55
+    Author     : Arturo
+*/
+
+html{
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4d6;    
+}
+
+ul {
+    list-style: none;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+a{
+    text-decoration: none;  
+    color: black;
+}
+
+a:hover{
+    color: purple;
+}
+
+.div-c {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    gap: 30px;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    background-color: #beff479e;
+}
+
+button {
+    border: none;
+    background-color: aqua;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
