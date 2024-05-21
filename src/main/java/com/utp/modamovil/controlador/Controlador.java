@@ -115,7 +115,11 @@ public class Controlador extends HttpServlet {
             request.setAttribute("producto", productos);
 
             request.getRequestDispatcher("Productos.jsp").forward(request, response);
+            //AQUI PONES TU IF Y ELSE
         }
+        
+        
+        
     }
 
     @Override
