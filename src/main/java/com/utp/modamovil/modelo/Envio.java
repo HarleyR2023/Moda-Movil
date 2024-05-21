@@ -1,22 +1,29 @@
 package com.utp.modamovil.modelo;
 
-public class Envio extends Entidad {
-    private Venta venta;
+public class Envio {
+    private int id;
+    private int ventaId;
     private String tipoEnvio;
-    
-    public Envio() {
+
+    // Getters y Setters
+    public int getId() {
+        return id;
     }
 
-    public Venta getVenta() {
-        return this.venta;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setVenta(Venta venta) {
-        this.venta = venta;
+    public int getVentaId() {
+        return ventaId;
+    }
+
+    public void setVentaId(int ventaId) {
+        this.ventaId = ventaId;
     }
 
     public String getTipoEnvio() {
-        return this.tipoEnvio;
+        return tipoEnvio;
     }
 
     public void setTipoEnvio(String tipoEnvio) {

@@ -11,13 +11,15 @@ public class Producto {
     private Double precio;
     private int stock;
     private Date fechaIngreso;
+    private int cantidad;
+    private String urlImagen;
 
     // Constructor vacío
     public Producto() {
     }
 
     // Constructor con todos los atributos
-    public Producto(int id, int categoriaId, int proveedorId, String nombre, String descripcion, Double precio, int stock, Date fechaIngreso) {
+    public Producto(int id, int categoriaId, int proveedorId, String nombre, String descripcion, Double precio, int stock, Date fechaIngreso, String urlImagen) {
         this.id = id;
         this.categoriaId = categoriaId;
         this.proveedorId = proveedorId;
@@ -26,6 +28,7 @@ public class Producto {
         this.precio = precio;
         this.stock = stock;
         this.fechaIngreso = fechaIngreso;
+        this.urlImagen = urlImagen;
     }
 
     // Getters y Setters
@@ -92,6 +95,23 @@ public class Producto {
     public void setFechaIngreso(Date fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
+    
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }    
+    
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }    
+    
 
     // Método toString para imprimir el objeto
     @Override

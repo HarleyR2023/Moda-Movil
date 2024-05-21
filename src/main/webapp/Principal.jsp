@@ -39,7 +39,7 @@
             </div>
             <div class="div-c">
                 <div><%=nombreUsuario%></div>
-                <button type="button">
+                <button class="btn-cerrar" type="button">
                     Cerrar Sesion
                 </button>
             </div>

@@ -34,6 +34,7 @@ public class ProductoDAO {
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setFechaIngreso(rs.getDate("fecha_ingreso"));
+                producto.setUrlImagen(rs.getString("url_imagen")); // Aquí se asigna la URL de la imagen                                
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,6 +68,7 @@ public class ProductoDAO {
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setFechaIngreso(rs.getDate("fecha_ingreso"));
+                producto.setUrlImagen(rs.getString("url_imagen")); // Aquí se asigna la URL de la imagen                
                 lista.add(producto);
             }
         } catch (Exception e) {
@@ -85,7 +87,7 @@ public class ProductoDAO {
 
     // Método para agregar un nuevo producto
     public int agregar(Producto producto) {
-        String sql = "INSERT INTO Productos(categoria_id, proveedor_id, nombre, descripcion, precio, stock, fecha_ingreso) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Productos(categoria_id, proveedor_id, nombre, descripcion, precio, stock, fecha_ingreso, url_imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -128,6 +130,7 @@ public class ProductoDAO {
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setStock(rs.getInt("stock"));
                 producto.setFechaIngreso(rs.getDate("fecha_ingreso"));
+                producto.setUrlImagen(rs.getString("url_imagen")); // Aquí se asigna la URL de la imagen                                    
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,7 +148,7 @@ public class ProductoDAO {
 
     // Método para actualizar un producto
     public int actualizar(Producto producto) {
-        String sql = "UPDATE Productos SET categoria_id=?, proveedor_id=?, nombre=?, descripcion=?, precio=?, stock=?, fecha_ingreso=? WHERE id=?";
+        String sql = "UPDATE Productos SET categoria_id=?, proveedor_id=?, nombre=?, descripcion=?, precio=?, stock=?, fecha_ingreso=?, url_imagen=? WHERE id=?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -156,7 +159,8 @@ public class ProductoDAO {
             ps.setDouble(5, producto.getPrecio());
             ps.setInt(6, producto.getStock());
             ps.setDate(7, new java.sql.Date(producto.getFechaIngreso().getTime()));
-            ps.setInt(8, producto.getId());
+            ps.setString(8, producto.getUrlImagen());
+            ps.setInt(9, producto.getId());
             r = ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
