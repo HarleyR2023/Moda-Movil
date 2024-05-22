@@ -10,7 +10,7 @@
     <form action="Controlador" method="POST" class="form-pago">
         <div class="div-sup">
             <div>
-                <h2>Seleccione el método de pago</h2>
+                <h2 class="color-off">Seleccione el método de pago</h2>
                 <input type="hidden" name="menu" value="ConfirmarCompra">
                 <div class="conteiner-card">
                 <div class="div-con">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="label-m">
                         <input type="radio" id="credito" name="metodoPago" value="Tarjeta de crédito">
-                        <label for="credito">Tarjeta de Crédito</label>                        
+                        <label class="color-off" for="credito">Tarjeta de Crédito</label>                        
                     </div>
                 </div>
                 <div class="div-con">
@@ -28,7 +28,7 @@
                     </div>
                     <div class="label-m">
                         <input type="radio" id="debito" name="metodoPago" value="Tarjeta de débito">
-                        <label for="debito">Tarjeta de Débito</label>
+                        <label class="color-off" for="debito">Tarjeta de Débito</label>
                     </div>
                 </div>
                 <div class="div-con">
@@ -37,13 +37,13 @@
                     </div>  
                     <div class="label-m">
                         <input type="radio" id="efectivo" name="metodoPago" value="Efectivo">
-                        <label for="efectivo">Efectivo</label>
+                        <label class="color-off" for="efectivo">Efectivo</label>
                     </div>
                 </div>
                 </div>                    
             </div>
             <div>
-                <h2>Seleccione el método de envío</h2>
+                <h2 class="color-off">Seleccione el método de envío</h2>
                 <div class="conteiner-card-t">
                     <div class="div-con">
                         <div class="div-img-p">
@@ -51,7 +51,7 @@
                         </div>    
                         <div class="label-m">
                             <input type="radio" id="tienda" name="metodoEnvio" value="Recogo En Tienda">
-                            <label for="tienda">Recogo En Tienda</label>                       
+                            <label class="color-off" for="tienda">Recogo En Tienda</label>                       
                         </div>
                     </div>
                     
@@ -61,7 +61,7 @@
                         </div>  
                         <div class="label-m">
                             <input type="radio" id="delivery" name="metodoEnvio" value="Delivery">
-                            <label for="delivery">Delivery</label><br>                             
+                            <label class="color-off" for="delivery">Delivery</label><br>                             
                         </div>
                     </div>
                 </div>

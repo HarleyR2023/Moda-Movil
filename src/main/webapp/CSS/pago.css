@@ -16,7 +16,7 @@ html{
 body {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4d6;
+    background-color: #0C081B;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -77,7 +77,8 @@ h2 {
     align-items: center;
     padding: 20px;
     gap: 20px;
-    background-color: blueviolet;
+    background-color: #25183A;
+    box-shadow: 0px 0px 5px 4px #887192;
     border-radius: 10px;
 }
 
@@ -85,8 +86,20 @@ h2 {
     margin: 10px;
 }
 
-.btn-pagos{
+.btn-pagos {
     border: none;
-    padding: 10px;
+    padding: 15px 20px;
     border-radius: 5px;
+    background-color: #0C081B;
+    color: #AB9DB3;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-pagos:hover{
+    background-color: #432F58;
+}
+
+.color-off{
+    color: #AB9DB3;
 }
