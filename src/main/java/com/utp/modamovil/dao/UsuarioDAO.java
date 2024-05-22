@@ -85,7 +85,7 @@ public class UsuarioDAO {
     
     public List<Usuario> listar(){
         String sql = "SELECT * FROM Usuarios";
-        List<Usuario> lista = new ArrayList<>();
+        List<Usuario> lista = new ArrayList<>();    
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

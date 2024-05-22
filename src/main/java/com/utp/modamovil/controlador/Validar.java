@@ -87,7 +87,7 @@ public class Validar extends HttpServlet {
                 request.getRequestDispatcher("/Controlador?menu=Productos&accion=Listar").forward(request, response);
             }else{
                 if(us != null && us.getIndicador().equals("T"))
-                request.getRequestDispatcher("PrincipalT.jsp").forward(request, response);
+                request.getRequestDispatcher("/Controlador?menu=PrincipalT&accion=Listar").forward(request, response);
             }
         }else if(accion.equalsIgnoreCase("Salir")) {
             HttpSession session = request.getSession();
