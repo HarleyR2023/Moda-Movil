@@ -1,14 +1,10 @@
--- Crear la base de datos
-CREATE DATABASE modamovil;
-USE modamovil;
-
--- Crear tabla de Categorias
+# Crear tabla de Categorias
 CREATE TABLE Categoria (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100)
 );
 
--- Crear tabla de Proveedor
+# Crear tabla de Proveedor
 CREATE TABLE Proveedor (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100),
@@ -17,7 +13,7 @@ CREATE TABLE Proveedor (
   correo VARCHAR(100)
 );
 
--- Crear tabla de Productos
+# Crear tabla de Productos
 CREATE TABLE Productos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   categoria_id INT,
@@ -32,7 +28,7 @@ CREATE TABLE Productos (
   FOREIGN KEY (proveedor_id) REFERENCES Proveedor(id)
 );
 
--- Crear tabla de Usuarios
+# Crear tabla de Usuarios
 CREATE TABLE Usuarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombreuser VARCHAR(100),
@@ -44,7 +40,7 @@ CREATE TABLE Usuarios (
   indicador VARCHAR(100)
 );
 
--- Crear tabla de Ventas
+# Crear tabla de Ventas
 CREATE TABLE Ventas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   usuario_id INT,
@@ -55,7 +51,7 @@ CREATE TABLE Ventas (
   FOREIGN KEY (usuario_id) REFERENCES Usuarios(id)
 );
 
--- Crear tabla de detallesVentas
+# Crear tabla de detallesVentas
 CREATE TABLE detallesVentas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   venta_id INT,
@@ -66,7 +62,7 @@ CREATE TABLE detallesVentas (
   FOREIGN KEY (producto_id) REFERENCES Productos(id)
 );
 
--- Crear tabla de Envio
+# Crear tabla de Envio
 CREATE TABLE Envio (
   id INT AUTO_INCREMENT PRIMARY KEY,
   venta_id INT,
@@ -74,7 +70,7 @@ CREATE TABLE Envio (
   FOREIGN KEY (venta_id) REFERENCES Ventas(id)
 );
 
--- Crear tabla de historialVentas
+# Crear tabla de historialVentas
 CREATE TABLE historialVentas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   venta_id INT,
@@ -84,7 +80,7 @@ CREATE TABLE historialVentas (
   FOREIGN KEY (venta_id) REFERENCES Ventas(id)
 );
 
--- Crear tabla de Facturas
+# Crear tabla de Facturas
 CREATE TABLE Facturas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   venta_id INT,
