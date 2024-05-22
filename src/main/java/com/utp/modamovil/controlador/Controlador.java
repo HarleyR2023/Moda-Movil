@@ -26,33 +26,63 @@ public class Controlador extends HttpServlet {
     EnvioDAO enviodao = new EnvioDAO();
     List<Producto> carrito = new ArrayList<>();
     Proveedor em = new Proveedor();
-    ProveedorDAO edao = new ProveedorDAO();
+    ProveedorDAO pdao = new ProveedorDAO();
+    int ide;
     
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if(menu.equals("PrinicipalT.jsp")){
+        if(menu.equals("PrincipalT")){
             switch (accion) {
                 case "Listar":
-                    List lista = edao.listar();
-                    request.setAttribute("Proveedores", lista);
+                    List<Proveedor> lista = pdao.listar();
+                    if (lista == null) {
+                        lista = new ArrayList<>();
+                    }
+                    request.setAttribute("proveedores", lista);
                     break;
                 case "Agregar":
-                    
-                    break;
+                    String nom = request.getParameter("txtNom");
+                    String direc  = request.getParameter("txtDirec");
+                    String tel  = request.getParameter("txtTel");
+                    String corr = request.getParameter("txtCorreo");
+                    em.setNombre(nom);
+                    em.setDireccion(direc);
+                    em.setTelefono(tel);
+                    em.setCorreo(corr);
+                    pdao.agregar(em);
+                    request.getRequestDispatcher("Controlador?menu=PrincipalT&accion=Listar").forward(request, response);
+                    break;                    
                 case "Editar":
-                    
+                    ide = Integer.parseInt(request.getParameter("id"));
+                    Proveedor p = pdao.listarId(ide);
+                    request.setAttribute("proveedor", p);
+                    request.getRequestDispatcher("Controlador?menu=PrincipalT&accion=Listar").forward(request, response);
                     break;
+                case "Actualizar":
+                    String nom1 = request.getParameter("txtNom");
+                    String direc1  = request.getParameter("txtDirec");
+                    String tel1  = request.getParameter("txtTel");
+                    String corr1 = request.getParameter("txtCorreo");
+                    em.setNombre(nom1);
+                    em.setDireccion(direc1);
+                    em.setTelefono(tel1);
+                    em.setCorreo(corr1);
+                    em.setId(ide);
+                    pdao.actualizar(em);
+                    request.getRequestDispatcher("Controlador?menu=PrincipalT&accion=Listar").forward(request, response);
+                    break;                    
                 case "Delete":
-                    
-                    break;
+                    ide = Integer.parseInt(request.getParameter("id"));
+                    pdao.delete(ide);
+                    request.getRequestDispatcher("Controlador?menu=PrincipalT&accion=Listar").forward(request, response);
+                    break;                      
                 default:
                     throw new AssertionError();
             }
             request.getRequestDispatcher("PrincipalT.jsp").forward(request, response);
-        
         }
         if ("Principal".equals(menu)) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);

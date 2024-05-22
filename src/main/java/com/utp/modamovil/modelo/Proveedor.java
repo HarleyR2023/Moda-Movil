@@ -1,6 +1,6 @@
 package com.utp.modamovil.modelo;
 
-public class Proveedor extends Entidad {
+public class Proveedor {
 
     private int id;
     private String nombre;
