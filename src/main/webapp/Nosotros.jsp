@@ -7,32 +7,32 @@
     <!-- Ruta relativa para el CSS -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css">
     <style>
-        /* Incluye aquí las mismas reglas CSS para depuración */
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* Color de fondo suave */
-            color: #333; /* Color de texto oscuro */
+            background-color: #f0f0f0; 
+            color: #333; 
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
         h1 {
-            color: #0056b3; /* Color azul para el título */
+            color: #0056b3;
             text-align: center;
             padding: 20px 0;
             margin-top: 0;
-            background-color: #e1e1e1; /* Fondo gris claro */
-            border-bottom: 2px solid #ccc; /* Línea inferior */
+            background-color: #e1e1e1;
+            border-bottom: 2px solid #ccc; 
         }
 
         .about-section {
-            max-width: 800px; /* Ancho máximo de los párrafos */
-            margin: 20px auto; /* Centrados horizontalmente */
+            max-width: 800px; 
+            margin: 20px auto;
             padding: 20px;
-            background-color: #fff; /* Fondo blanco */
-            border-radius: 5px; /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            background-color: #fff; 
+            border-radius: 5px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
         }
 
         .image-gallery {
@@ -41,7 +41,7 @@
         }
 
         .image-gallery h2 {
-            color: #0056b3; /* Color azul para el subtítulo */
+            color: #0056b3; 
             margin-bottom: 20px;
         }
 
@@ -50,29 +50,29 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px; /* Espacio entre imágenes */
+            gap: 10px; 
         }
 
         .image-gallery img {
-            width: 200px; /* Ajusta el tamaño de las imágenes */
-            height: 150px; /* Mantiene una altura uniforme */
-            object-fit: cover; /* Asegura que la imagen se ajuste a las dimensiones */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
-            transition: transform 0.3s; /* Transición suave */
+            width: 200px; 
+            height: 150px; 
+            object-fit: cover; 
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+            transition: transform 0.3s;
         }
 
         .image-gallery img:hover {
-            transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
+            transform: scale(1.05); 
         }
 
         a {
-            color: #0056b3; /* Color azul */
-            text-decoration: none; /* Sin subrayado */
+            color: #0056b3;
+            text-decoration: none;
         }
 
         a:hover {
-            text-decoration: underline; /* Subrayado al pasar el cursor */
+            text-decoration: underline; 
         }
     </style>
 </head>
