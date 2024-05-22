@@ -1,8 +1,11 @@
 package com.utp.modamovil.controlador;
 
+import com.utp.modamovil.modelo.Proveedor;
+import com.utp.modamovil.dao.ProveedorDAO;
 import com.utp.modamovil.dao.ProductoDAO;
 import com.utp.modamovil.dao.VentaDAO;
 import com.utp.modamovil.dao.EnvioDAO;
+import com.utp.modamovil.dao.ProveedorDAO;
 import com.utp.modamovil.modelo.Producto;
 import com.utp.modamovil.modelo.Venta;
 import com.utp.modamovil.modelo.Envio;
@@ -22,12 +25,35 @@ public class Controlador extends HttpServlet {
     VentaDAO ventadao = new VentaDAO();
     EnvioDAO enviodao = new EnvioDAO();
     List<Producto> carrito = new ArrayList<>();
+    Proveedor em = new Proveedor();
+    ProveedorDAO edao = new ProveedorDAO();
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-
+        if(menu.equals("PrinicipalT.jsp")){
+            switch (accion) {
+                case "Listar":
+                    List lista = edao.listar();
+                    request.setAttribute("Proveedores", lista);
+                    break;
+                case "Agregar":
+                    
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Delete":
+                    
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+            request.getRequestDispatcher("PrincipalT.jsp").forward(request, response);
+        
+        }
         if ("Principal".equals(menu)) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         } else if (menu.equals("Productos")) {
@@ -62,7 +88,12 @@ public class Controlador extends HttpServlet {
                     List<Producto> productosDefault = proddao.listar();
                     request.setAttribute("producto", productosDefault);
                     request.getRequestDispatcher("Productos.jsp").forward(request, response);
+                    
+                    case "PrincipalT":
+            request.getRequestDispatcher("PrincipalT.jsp").forward(request, response);
             }
+            
+           
         } else if (menu.equals("Pago")) {
             request.getRequestDispatcher("Pago.jsp").forward(request, response);
         } else if (menu.equals("ConfirmarCompra")) {
@@ -117,6 +148,7 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Productos.jsp").forward(request, response);
         }
     }
+    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

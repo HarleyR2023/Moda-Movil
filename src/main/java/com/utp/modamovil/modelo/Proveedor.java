@@ -1,13 +1,22 @@
 package com.utp.modamovil.modelo;
 
 public class Proveedor extends Entidad {
-    
+
+    private int id;
     private String nombre;
     private String direccion;
     private String telefono;
     private String correo;
-    
+
     public Proveedor() {}
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return this.nombre;
