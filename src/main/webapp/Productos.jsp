@@ -56,14 +56,14 @@
                 for (Producto prod : productos) { 
         %>
         <div class="container-p">
-            <h3 class="h2-div"><%= prod.getNombre() %></h3>
+            <h3 class="h2-div color-p"><%= prod.getNombre() %></h3>
             <div class="img-div">
                 <img src="<%= prod.getUrlImagen() %>" alt="<%= prod.getUrlImagen() %>"/>
             </div>
-            <p>
+            <p class="color-p">
                 <%= prod.getDescripcion() %>
             </p>
-            <p><span>Precio: </span>S/<%= prod.getPrecio() %></p>
+            <p class="color-p"><span class="span-color">Precio: </span>S/<%= prod.getPrecio() %></p>
             <form action="Controlador" method="POST">
                 <input type="hidden" name="menu" value="Productos">
                 <input type="hidden" name="accion" value="AgregarCarrito">
@@ -85,7 +85,7 @@
     
     <div class="carrito">
         <div class="div-h2">
-            <i class='bx bxs-cart' style='color:black; font-size: 30px;' ></i>
+            <i class='bx bxs-cart' style='color:black; font-size: 30px; color: #AB9DB3;' ></i>
             <h2>Carrito de Compras</h2>            
         </div>
         
@@ -98,14 +98,14 @@
                     total += prod.getPrecio() * prod.getCantidad();
         %>
         <div class="container-c">
-            <h3><%= prod.getNombre() %></h3>
+            <h3 class="color-p"><%= prod.getNombre() %></h3>
             <div class="father-carrito">
                 <div class="img-carrito">
                     <img src="<%= prod.getUrlImagen() %>" alt="<%= prod.getUrlImagen() %>"/>
                 </div>
             <div>
-                <p class="carrito-p"><span>Precio: </span>S/ <%= prod.getPrecio() %></p>
-                <p class="carrito-p"><span>Cantidad: </span><%= prod.getCantidad() %></p>
+                <p class="carrito-p color-p"><span class="span-color">Precio: </span>S/ <%= prod.getPrecio() %></p>
+                <p class="carrito-p color-p"><span class="span-color">Cantidad: </span><%= prod.getCantidad() %></p>
             <form class="form-carrito" action="Controlador" method="POST">
                 <input type="hidden" name="menu" value="ActualizarCarrito">
                 <input type="hidden" name="id" value="<%= prod.getId() %>">

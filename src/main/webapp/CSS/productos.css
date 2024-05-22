@@ -16,7 +16,7 @@ html{
 body{
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4d6;
+    background-color: #0C081B;
 }
 
 ul {
@@ -29,11 +29,11 @@ ul {
 
 a{
     text-decoration: none;  
-    color: black;
+    color: #AB9DB3;
 }
 
 a:hover{
-    color: purple;
+    color: white;
 }
 
 .div-c {
@@ -44,9 +44,8 @@ a:hover{
     align-items: center;
 }
 
-
 .container-p {
-    background-color: burlywood;
+    background-color: #25183A;
     width: 290px;
     height: 490px;
     padding: 10px;
@@ -55,6 +54,7 @@ a:hover{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 0px 5px 4px #887192;    
 }
 
 h2{
@@ -74,7 +74,7 @@ p{
     display: flex;
     flex-wrap: wrap;
     /* align-items: center; */
-    gap: 20px;
+    gap: 30px;
     justify-content: space-evenly;
 }
 
@@ -94,10 +94,17 @@ img {
 
 .btn-div {
     margin: 15px;
-    padding: 7px;
+    padding: 10px 20px;
     border: none;
     font-size: 15px;
     border-radius: 5px;
+    background-color: #0C081B;
+    color: #AB9DB3;
+    cursor: pointer;    
+}
+
+.btn-div:hover{
+    background-color: #432F58;
 }
 
 .h2-div {
@@ -118,7 +125,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;    
+    gap: 5px;   
+    color: #AB9DB3;    
 }
 
 h3{
@@ -128,10 +136,12 @@ h3{
 
 .h3-div {
     margin: 15px 0px;
+    color: #AB9DB3;
 }
 
 .container-c {
-    background-color: burlywood;
+    background-color: #25183A;
+    box-shadow: 0px 0px 5px 4px #887192;
     width: 290px;
     height: 120px;
     /* padding: 10px; */
@@ -152,6 +162,8 @@ h3{
     padding: 3px 8px;
     cursor: pointer;
     border-radius: 5px;
+    color: white;
+    background-color: #AB9DB3;
 }
 
 .btn-e {
@@ -184,7 +196,8 @@ h3{
 .global-carrito {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 25px;
+    margin: 20px 0px;
 }
 
 .container-pago {
@@ -200,27 +213,40 @@ h3{
     border: none;
     padding: 10px;
     border-radius: 5px;
-    background-color: black;
-    color: white;
+    background-color: #0C081B;
+    color: #AB9DB3;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 4px #887192;
 }
 
-.btn-cerrar{
+.btn-gencompra:hover{
+    background-color: #432F58;
+}
+
+.btn-cerrar {
     border: none;
-    background-color: aqua;
-    padding: 8px;
+    background-color: #0C081B;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;    
+    font-size: 14px;
+    color: #AB9DB3;
+}
+
+.btn-cerrar:hover{
+    background-color: #432F58;
 }
 
 nav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    height: 60px;
+    height: 65px;
     align-items: center;
-    background-color: #beff479e;
+    background-color: #25183A;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0px 0px 5px 4px #887192;
 }
 
 .div-icon{
@@ -229,4 +255,18 @@ nav {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    color: #AB9DB3;    
+}
+
+.color-p{
+    color: #AB9DB3;
+}
+
+.span-color{
+    color: white;
+}
+
+.total {
+    color: white;
+    margin: 10px;
 }

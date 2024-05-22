@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="container-confirmacion">
-        <h1>Compra Confirmada</h1>
-        <p>Gracias por tu compra. Tu pedido ha sido procesado exitosamente.</p>
+        <h1 class="color-of">Compra Confirmada</h1>
+        <p class="color-of">Gracias por tu compra. Tu pedido ha sido procesado exitosamente.</p>
         <a href="<%= request.getContextPath()%>/Controlador?menu=Productos&accion=Listar">Volver a la tienda</a>        
     </div>
 </body>
