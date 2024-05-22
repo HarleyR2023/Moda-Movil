@@ -6,7 +6,7 @@
     <title>Pago</title>
     <link href="CSS/pago.css?v=<%= System.currentTimeMillis() %>" rel="stylesheet" type="text/css"/>
 </head>
-<body>
+<body>"Controlador" 
     <form action="Controlador" method="POST" class="form-pago">
         <div class="div-sup">
             <div>
