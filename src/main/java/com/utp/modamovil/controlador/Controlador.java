@@ -34,6 +34,15 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
+        
+        if(menu.equals("Nosotros")){
+            request.getRequestDispatcher("Nosotros.jsp").forward(request, response);
+        }
+        
+        if(menu.equals("Contacto")){
+            request.getRequestDispatcher("Contacto.jsp").forward(request, response);
+        }
+        
         if(menu.equals("PrincipalT")){
             switch (accion) {
                 case "Listar":

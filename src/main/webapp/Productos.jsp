@@ -24,13 +24,13 @@
             <div>
                 <ul>
                     <li>
-                        <a href="#">Nosotros</a>
+                        <a href="<%= request.getContextPath()%>/Controlador?menu=Nosotros">Nosotros</a>
                     </li>
                     <li>
                         <a href="<%= request.getContextPath()%>/Controlador?menu=Productos&accion=Listar">Productos</a>
                     </li>
                     <li>
-                        <a href="#">Contactanos</a>
+                        <a href="<%= request.getContextPath()%>/Controlador?menu=Contacto">Contactanos</a>
                     </li>
                 </ul>                
             </div>
