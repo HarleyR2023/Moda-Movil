@@ -18,6 +18,7 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -210,15 +211,15 @@ public class Controlador extends HttpServlet {
             // Llenar el informe con los parámetros y datos vacíos
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
 
-            // Exportar el informe a un archivo PDF dentro del proyecto
-            String filePath = getServletContext().getRealPath("/pdf/") + "report_" + ventaId + ".pdf";
+            // Exportar el informe a un archivo PDF en la misma ubicación que el proyecto
+            String filePath = "report_" + ventaId + ".pdf";
             JasperExportManager.exportReportToPdfFile(jasperPrint, filePath);
             System.out.println("Informe generado exitosamente en: " + filePath);
 
         } catch (JRException e) {
             System.err.println("Error al generar el informe: " + e.getMessage());
             e.printStackTrace();
-        }         
+        }       
 
             carrito.clear();
             request.getSession().setAttribute("carrito", carrito);
