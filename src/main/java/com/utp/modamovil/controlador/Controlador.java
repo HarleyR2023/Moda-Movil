@@ -1,23 +1,29 @@
 package com.utp.modamovil.controlador;
 
-import com.utp.modamovil.modelo.Proveedor;
-import com.utp.modamovil.dao.ProveedorDAO;
+import com.utp.modamovil.dao.EnvioDAO;
 import com.utp.modamovil.dao.ProductoDAO;
 import com.utp.modamovil.dao.VentaDAO;
-import com.utp.modamovil.dao.EnvioDAO;
 import com.utp.modamovil.dao.ProveedorDAO;
-import com.utp.modamovil.modelo.Producto;
-import com.utp.modamovil.modelo.Venta;
 import com.utp.modamovil.modelo.Envio;
+import com.utp.modamovil.modelo.Producto;
+import com.utp.modamovil.modelo.Proveedor;
+import com.utp.modamovil.modelo.Venta;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "Controlador", urlPatterns = {"/Controlador"})
 public class Controlador extends HttpServlet {
@@ -151,6 +157,68 @@ public class Controlador extends HttpServlet {
             envio.setVentaId(ventaId);
             envio.setTipoEnvio(metodoEnvio);
             enviodao.agregar(envio);
+            
+        // Generar el contenido JRXML en línea con los parámetros
+        String jrxmlContent = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+                + "<jasperReport xmlns=\"http://jasperreports.sourceforge.net/jasperreports\" "
+                + "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
+                + "xsi:schemaLocation=\"http://jasperreports.sourceforge.net/jasperreports "
+                + "http://jasperreports.sourceforge.net/xsd/jasperreport.xsd\" name=\"TestReport\" "
+                + "pageWidth=\"595\" pageHeight=\"842\" columnWidth=\"535\" leftMargin=\"20\" rightMargin=\"20\" "
+                + "topMargin=\"20\" bottomMargin=\"20\" uuid=\"5d6d9b27-18b8-46d9-9a4d-f45a00c091ee\">"
+                + "    <title>"
+                + "        <band height=\"79\" splitType=\"Stretch\">"
+                + "            <staticText>"
+                + "                <reportElement x=\"139\" y=\"23\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
+                + "                <textElement textAlignment=\"Center\"/>"
+                + "                <text><![CDATA[Compra Confirmada]]></text>"
+                + "            </staticText>"
+                + "        </band>"
+                + "    </title>"
+                + "    <detail>"
+                + "        <band height=\"79\" splitType=\"Stretch\">"
+                + "            <textField>"
+                + "                <reportElement x=\"139\" y=\"10\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
+                + "                <textElement textAlignment=\"Center\"/>"
+                + "                <textFieldExpression><![CDATA[\"ID de venta: \" + $P{ventaId}]]></textFieldExpression>"
+                + "            </textField>"
+                + "            <textField>"
+                + "                <reportElement x=\"139\" y=\"40\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
+                + "                <textElement textAlignment=\"Center\"/>"
+                + "                <textFieldExpression><![CDATA[\"Método de pago: \" + $P{metodoPago}]]></textFieldExpression>"
+                + "            </textField>"
+                + "            <textField>"
+                + "                <reportElement x=\"139\" y=\"70\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
+                + "                <textElement textAlignment=\"Center\"/>"
+                + "                <textFieldExpression><![CDATA[\"Tipo de envío: \" + $P{tipoEnvio}]]></textFieldExpression>"
+                + "            </textField>"
+                + "        </band>"
+                + "    </detail>"
+                + "</jasperReport>";
+
+        try {
+            // Cargar el diseño del informe desde la cadena
+            JasperDesign jasperDesign = JRXmlLoader.load(new ByteArrayInputStream(jrxmlContent.getBytes()));
+            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            // Crear un mapa para los parámetros
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("ventaId", ventaId);
+            parameters.put("metodoPago", metodoPago);
+            parameters.put("tipoEnvio", metodoEnvio);
+
+            // Llenar el informe con los parámetros y datos vacíos
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+
+            // Exportar el informe a un archivo PDF dentro del proyecto
+            String filePath = getServletContext().getRealPath("/pdf/") + "report_" + ventaId + ".pdf";
+            JasperExportManager.exportReportToPdfFile(jasperPrint, filePath);
+            System.out.println("Informe generado exitosamente en: " + filePath);
+
+        } catch (JRException e) {
+            System.err.println("Error al generar el informe: " + e.getMessage());
+            e.printStackTrace();
+        }         
 
             carrito.clear();
             request.getSession().setAttribute("carrito", carrito);
@@ -187,11 +255,7 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Productos.jsp").forward(request, response);
             //AQUI PONES TU IF Y ELSE
         }
-        
-        
-        
     }
-    
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
