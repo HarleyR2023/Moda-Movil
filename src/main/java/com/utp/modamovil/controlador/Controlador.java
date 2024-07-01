@@ -145,12 +145,16 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("ConfirmarCompra")) {
             String metodoPago = request.getParameter("metodoPago");
             String metodoEnvio = request.getParameter("metodoEnvio");
+            String nombreUsuario = request.getParameter("nombreUsuario");
+
+            String estado = "Completado";
+            double total = carrito.stream().mapToDouble(p -> p.getPrecio() * p.getCantidad()).sum();
             Venta venta = new Venta();
             venta.setUsuarioId(1); // Suponiendo un usuario con ID 1 para el ejemplo
             venta.setFecha(new Date());
-            venta.setTotal(carrito.stream().mapToDouble(p -> p.getPrecio() * p.getCantidad()).sum());
+            venta.setTotal(total);
             venta.setMetodoPago(metodoPago);
-            venta.setEstado("Completado");
+            venta.setEstado(estado);
 
             int ventaId = ventadao.agregar(venta);
 
@@ -159,67 +163,31 @@ public class Controlador extends HttpServlet {
             envio.setTipoEnvio(metodoEnvio);
             enviodao.agregar(envio);
             
-        // Generar el contenido JRXML en línea con los parámetros
-        String jrxmlContent = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-                + "<jasperReport xmlns=\"http://jasperreports.sourceforge.net/jasperreports\" "
-                + "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
-                + "xsi:schemaLocation=\"http://jasperreports.sourceforge.net/jasperreports "
-                + "http://jasperreports.sourceforge.net/xsd/jasperreport.xsd\" name=\"TestReport\" "
-                + "pageWidth=\"595\" pageHeight=\"842\" columnWidth=\"535\" leftMargin=\"20\" rightMargin=\"20\" "
-                + "topMargin=\"20\" bottomMargin=\"20\" uuid=\"5d6d9b27-18b8-46d9-9a4d-f45a00c091ee\">"
-                + "    <title>"
-                + "        <band height=\"79\" splitType=\"Stretch\">"
-                + "            <staticText>"
-                + "                <reportElement x=\"139\" y=\"23\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
-                + "                <textElement textAlignment=\"Center\"/>"
-                + "                <text><![CDATA[Compra Confirmada]]></text>"
-                + "            </staticText>"
-                + "        </band>"
-                + "    </title>"
-                + "    <detail>"
-                + "        <band height=\"79\" splitType=\"Stretch\">"
-                + "            <textField>"
-                + "                <reportElement x=\"139\" y=\"10\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
-                + "                <textElement textAlignment=\"Center\"/>"
-                + "                <textFieldExpression><![CDATA[\"ID de venta: \" + $P{ventaId}]]></textFieldExpression>"
-                + "            </textField>"
-                + "            <textField>"
-                + "                <reportElement x=\"139\" y=\"40\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
-                + "                <textElement textAlignment=\"Center\"/>"
-                + "                <textFieldExpression><![CDATA[\"Método de pago: \" + $P{metodoPago}]]></textFieldExpression>"
-                + "            </textField>"
-                + "            <textField>"
-                + "                <reportElement x=\"139\" y=\"70\" width=\"295\" height=\"30\" uuid=\"f92d4418-8a52-485d-8052-9d7e08c366a9\"/>"
-                + "                <textElement textAlignment=\"Center\"/>"
-                + "                <textFieldExpression><![CDATA[\"Tipo de envío: \" + $P{tipoEnvio}]]></textFieldExpression>"
-                + "            </textField>"
-                + "        </band>"
-                + "    </detail>"
-                + "</jasperReport>";
 
-        try {
-            // Cargar el diseño del informe desde la cadena
-            JasperDesign jasperDesign = JRXmlLoader.load(new ByteArrayInputStream(jrxmlContent.getBytes()));
-            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            try {
+                // Ruta del archivo .jasper
+                String jasperPath = getServletContext().getRealPath("/WEB-INF/classes/reports/Reportecompra.jasper");
 
-            // Crear un mapa para los parámetros
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("ventaId", ventaId);
-            parameters.put("metodoPago", metodoPago);
-            parameters.put("tipoEnvio", metodoEnvio);
+                // Crear un mapa para los parámetros
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("nombreUsuario", nombreUsuario);
+                parameters.put("total", total);
+                parameters.put("metodoPago", metodoPago);
+                parameters.put("estado", estado);
+                parameters.put("metodoEnvio", metodoEnvio);
 
-            // Llenar el informe con los parámetros y datos vacíos
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+                // Llenar el informe con los parámetros y datos vacíos
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperPath, parameters, new JREmptyDataSource());
+                
+                // Exportar el informe a un archivo PDF
+                String filePath = getServletContext().getRealPath("/reports/report_" + ventaId + ".pdf");
+                JasperExportManager.exportReportToPdfFile(jasperPrint, filePath);
+                System.out.println("Informe generado exitosamente en: " + filePath);
 
-            // Exportar el informe a un archivo PDF en la misma ubicación que el proyecto
-            String filePath = "report_" + ventaId + ".pdf";
-            JasperExportManager.exportReportToPdfFile(jasperPrint, filePath);
-            System.out.println("Informe generado exitosamente en: " + filePath);
-
-        } catch (JRException e) {
-            System.err.println("Error al generar el informe: " + e.getMessage());
-            e.printStackTrace();
-        }       
+            } catch (JRException e) {
+                System.err.println("Error al generar el informe: " + e.getMessage());
+                e.printStackTrace();
+            }      
 
             carrito.clear();
             request.getSession().setAttribute("carrito", carrito);

@@ -130,6 +130,7 @@
             <form action="Controlador" method="POST">
                 <input type="hidden" name="menu" value="Pago">
                 <button class="btn-gencompra" type="submit">Generar Compra</button>
+                <input type="hidden" name="nombreUsuario" value="<%= nombreUsuario %>">
             </form>            
         </div>
 

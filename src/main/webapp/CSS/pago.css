@@ -103,3 +103,75 @@ h2 {
 .color-off{
     color: #AB9DB3;
 }
+
+.tarjetaDiv{
+    background-color: rgba(0,0,0, 0.26);
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(2px);
+}
+
+.tarjetaFondo {
+    background-color: #502450;
+    color: white;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalNone{
+    display: none;
+}
+
+.tar-div {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    align-items: center;
+}
+
+.tar-div label{
+    width: 140px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.tar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+button.btnCerrar {
+    margin: 20px 0px 20px 0px;
+}
+
+input#cardNumber {
+    height: 25px;
+    font-size: 14px;
+    width: 140px;
+}
+
+
+.tar-botones button {
+    cursor: pointer;
+    height: 35px;
+    width: 125px;
+}
+
+.tar-botones {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}

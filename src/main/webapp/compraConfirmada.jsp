@@ -11,6 +11,7 @@
     <div class="container-confirmacion">
         <h1 class="color-of">Compra Confirmada</h1>
         <p class="color-of">Gracias por tu compra. Tu pedido ha sido procesado exitosamente.</p>
+        <a href="<%= request.getContextPath()%>/pdfs/pdfUser.pdf" download="boleta_modamovil.pdf">Descargar tu boleta aquí</a>
         <a href="<%= request.getContextPath()%>/Controlador?menu=Productos&accion=Listar">Volver a la tienda</a>        
     </div>
 </body>
