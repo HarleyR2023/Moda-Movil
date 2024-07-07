@@ -17,6 +17,7 @@
     <title>Pagina Productos</title>
     <link href="CSS/productos.css?v=<%= System.currentTimeMillis() %>" rel="stylesheet" type="text/css"/>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>    
+    <script src="//code.tidio.co/lyctz9w1or2mznxpfvz0g6v48ktqwewg.js" async></script>
 </head>
 <body>
     
