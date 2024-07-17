@@ -2,8 +2,8 @@
 Una aplicación web de una tienda de ropa en línea.
 
 # Tecnologías
-* [Maven](https://maven.apache.org/download.cgi)
-* [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+* [Maven](https://maven.apache.org/download.cgi) - Library Repository
+* [JDK 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html) - Java Development Kit
 * [Jakarta EE 10 Web](https://mvnrepository.com/artifact/jakarta.platform/jakarta.jakartaee-api) - Maven Library
 * [MySQL Connector J](https://mvnrepository.com/artifact/com.mysql/mysql-connector-j) - Maven Library
 * [Tomcat 10](https://tomcat.apache.org/download-10.cgi) - Servidor
