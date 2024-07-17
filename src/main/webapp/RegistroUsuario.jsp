@@ -18,20 +18,24 @@
                 <div class="div-l">
                     <label class="text-sesion">Usuario</label>
                     <input type="text" name="username" class="input-1">
+                    
+                    <label class="text-sesion">Nombre</label>
+                    <input type="text" name="nombre" class="input-1">
+                    
+                    <label class="text-sesion">Apellidos</label>
+                    <input type="text" name="apellidos" class="input-1">
                 </div>
-                <!--  
-                    Falta nombre, apellidos, correo, telefono 
-                --> 
                 
                 <div class="div-l">
                     <label class="text-sesion">Contraseña</label>
                     <input type="password" name="password" class="input-1">
                     
                     <label class="text-sesion">Confirmar Contraseña</label>
-                    <input type="password" name="confirm_password" class="input-1">
+                    <input type="password" name="confirmar_password" class="input-1">
+                   
                 </div>
                 
-                <input class="btn-enviar" type="submit" name="register" value="Registrar">
+                <input class="btn-enviar" type="submit" name="accion" value="Crear Cuenta">
             </div>
         </form>
     </body>

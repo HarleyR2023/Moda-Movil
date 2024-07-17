@@ -22,8 +22,8 @@
                     <input type="password" name="txtpass">
                 </div>
                 <input class="btn-enviar" type="submit" name="accion" value="Ingresar">
-            </div>    
+                <input class="btn-enviar" type="submit" name="accion" value="No Tengo Cuenta">
+            </div>
         </form>
-
     </body>
 </html>
